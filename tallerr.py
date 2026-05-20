@@ -172,6 +172,7 @@ def productos():
                 break
             else:
                 print("El producto no puede estar vacío. Intenta nuevamente.")
+        i += 1
 
 
     print("Lista de productos:")
@@ -198,15 +199,120 @@ def productos():
     elif marcar.lower() != 'si' and marcar.lower() != 'no':
         print("Opción no válida. No se marcará ningun producto como consultado.")
 
+def precios():
+    i=0
+    precios = []
+    while i < 5:
+        while True:
+            try:
+                precio = float(input("Ingresa el precio del producto: "))
+                if precio <= 0:
+                    print("Ingresa un número positivo.")
+                else:
+                    precios.append(precio)
+                    break
+            except ValueError:
+                print("ingresa un numero, no  una letra")
+        i += 1
     
+    suma = 0
+
+    for precio in precios:
+        suma = suma + precio
+
+    discount = "como es una suma de mas de 50000, tienes descuento" if suma > 50000 else "como es una suma de menos de 50000, no tienes descuento"
+
+    print(f"El total es {suma}, {discount}")
+    
+def edadlista():
+    
+    edades = []
+    menores = []
+    
+    i=0
+    while i > 6:
+        while True:
+            try:
+                edad = int(input("Ingrese una edad: "))
+                if edad < 1:
+                    print("Ingrese una edad válida")
+                else:
+                    edades.append(edad)
+                    break
+            except ValueError:
+                print("Ingrese un valor válido")
+            i += 1
+
+    print(f"lista de edades: {edades}")
+
+    for edad in edades:
+        if edad < 18:
+            menores.append(edad)
+            edades.pop(edad)
+
+    print(f"mayores de edad: {len(edades)}")
+    print(f"menores de edad: {len(menores)}")
+
+def encuesta():
+    respuestas = []
+
+    for i in range(6):
+        while True:
+            respuesta = input("¿Prefieres Python, Java, Excel o Scratch?: ").lower()
+
+            if respuesta in ["python", "java", "scratch", "excel"]:
+                respuestas.append(respuesta)
+                break
+            else:
+                print("Ingrese una opción válida")
+
+    print("\nResultados:")
+    print("Python:", respuestas.count("python"))
+    print("Java:", respuestas.count("java"))
+    print("Excel:", respuestas.count("excel"))
+    print("Scratch:", respuestas.count("scratch"))
+    
+def buscar():
+    estudiantes = ["Laura", "Isabella", "Ariana", "Valerie", "Ángela", "Samuel", "Juan Manuel"]
+
+    while True:
+        try:
+            revisar = input("")
+
 def GUI():
     print("ingrese ejercicio")
     print("""1      2
-          3      4
-          5      6
-          7      8
-          9      10
-          11      12
-""")
+    3      4
+    5      6
+    7      8
+    9      10
+    11      12
+    """)
 
-option = int()
+    funciones = {
+        1: listado,
+        2: promedio,
+        3: temp,
+        4: tareas,
+        5: productos,
+        6: precios,
+        7: edadlista,
+        8: encuesta
+    }
+
+    while True:
+        try:
+            option = int(input("> "))
+            
+            if option in funciones:
+                funciones[option]()   # ejecuta la función
+                break
+            else:
+                print("Ingresa un número válido.")
+
+        except ValueError:
+            print("Ingresa un número válido.")
+
+    GUI()
+
+GUI()

@@ -1,10 +1,40 @@
-"""
-Taller teórico
-1. ¿Por qué una lista puede ser más útil que crear muchas variables como nota1, nota2, nota3?
-    -   Porque la lista almacena esas variables dentro de una misma categoria, permitiendo que se extraigan de forma más eficaz
+print("Taller teórico")
+print("Ejercicios del 1 al 13")
+print("""
+1. ¿Por qué una lista puede ser más útil que crear muchas variables como nota1, nota2,  nota3?
+    - Porque las listas almacenan varias variables con una misma categoría
+      
+2. Explique qué significa que las listas en Python empiezan en la posición 0
+    - Porque en la memoria de la computadora representa una distancia, la posición significa desplazamiento (offset), y toda distancia debe iniciar desde 0
+      
+3. ¿Qué función cumple append() dentro de una lista?
+    - Añade un solo elemento a una lista
+      
+4. ¿Para qué sirve len() cuando se trabaja con listas? 
+    - Sirve para decirnos cuántos elementos tiene una lista.
+      
+5. Explique la diferencia entre mostrar una lista completa y mostrar un elemento por posición. 
+    - Mostrar una lista completa significa mostrar cada uno de sus elementos, mientras que mostrar un elemento por posición solo nos muestra un solo elemento de una lista.
+      
+6. ¿Qué error puede ocurrir si se intenta consultar una posición que no existe en la lista? 
+    - IndexError: list index out of range, significa que el elemento al que queremos acceder todavía no existe en esa posición
+      
+7. ¿Por qué es útil recorrer una lista con for? 
+    - Porque revisa todos los elementos de la lista sin importar el tamaño.
 
+8. Explique cómo se puede calcular un promedio usando una lista, un acumulador y len(). 
+    - Usando una lista vacía, agregando notas con while y un contador, validando con if y except, y calculando el promedio usando el acumulador y for para sumar
 
-"""
+9. ¿Qué ventaja tiene validar un dato antes de guardarlo en una lista? 
+      
+
+10. Mencione tres situaciones escolares reales donde conviene usar listas.
+    - Tomar asistencia
+    - Consultar información de estudiantes
+    - Registrar las notas del periodo de un estudiante
+
+""")
+
 
 # Taller practico
 
@@ -382,67 +412,88 @@ def control():
     print(f"DESEMPEÑO ACADÉMICO\nNOMBRE: {nombre}\nNOTAS: {desglosado}\nPROMEDIO: {promedio}\nDESEMPEÑO: {desempeño}")
 
 def final():
-    class Estudiante:
-        def __init__(self, nombre, *notas:int):
-            nombre = nombre
-            est_notas = []
-            est_notas.extend(notas)
-    
-    while True:
-        try:
-            nombre = input("Ingrese el nombre del estudiante: ").lower()
-            if nombre is not None and nombre.strip() != "":
+    estudiantes = []
 
-                Estudiante.nombre = nombre
+    class Estudiante:
+        def __init__(self, nombre):
+            self.nombre = nombre
+            self.est_notas = []
+
+        def promedioDesempeño(self, est_notas):
+            suma = 0
+            for nota in est_notas:
+                suma = suma + nota
+
+            promedio = round(suma / len(est_notas),2)
+
+            if promedio < 3:
+                desempeño = "BAJO"
+            elif promedio < 3.9:
+                desempeño = "BÁSICO"
+            elif promedio < 4.5:
+                desempeño = "ALTO"
+            elif promedio <= 5:
+                desempeño = "SUPERIOR"
+
+            desglosado= ", ".join(map(str,est_notas))
+
+
+            return desempeño, promedio, desglosado
+    
+    print("BIENVENIDO!! Deseas registrar estudiantes? (s/n): ")
+    respuesta = input("> " ).strip().lower()
+    while respuesta not in ["s", "n"]:
+        print("Respuesta no válida, por favor ingresa 's' o 'n'")
+        respuesta = input("> ").strip().lower()
+
+    if respuesta == "n":
+        print("Gracias por usar el sistema!!")
+    else:
+        while True:
+            while True:
+                nombre = input("Ingrese el nombre del estudiante: ").strip()
+                if nombre and nombre.isalpha():
+                    # valid name contains only letters
+                    estudiante = Estudiante(nombre)
+                    break
+                else:
+                    print("Ingrese un nombre válido (solo letras)")
+
+            i = 0
+        
+            while i<5:
+                while True:
+                    try:
+                        nota_est = float(input("Dame una nota: "))
+                        if nota_est < 1 or nota_est > 5:
+                            print("Ingresa un número mayor a 1 y menor a 5")
+                            continue
+                        estudiante.est_notas.append(nota_est)
+                        break
+                    except ValueError:
+                        print("ingresa un numero, no  una letra")
+                i += 1
+
+            estudiantes.append(estudiante)
+            print("Quieres registrar otro estudiante? (s/n): ")
+            respuesta = input("> " ).strip().lower()
+            while respuesta not in ["s", "n"]:
+                print("Respuesta no válida, por favor ingresa 's' o 'n'")
+                respuesta = input("> ").strip().lower()
+
+            if respuesta == "n":
+                print("Gracias por usar el sistema!!")
+                estudiantes.sort(key=lambda e: e.promedioDesempeño(e.est_notas)[1], reverse=True)
+                print("\nESTUDIANTES ORDENADOS POR DESEMPEÑO ACADÉMICO:")
+                for est in estudiantes:
+                    desempeño, promedio, desglosado = est.promedioDesempeño(est.est_notas)
+                    print(f"NOMBRE: {est.nombre}\nNOTAS: {desglosado}\nPROMEDIO: {promedio}\nDESEMPEÑO: {desempeño}\n")
                 break
             else:
-                print("Ingrese un nombre válido")
-        except TypeError or ValueError:
-            print("Ingrese letras")
-
-    i = 0
-    suma = 0
-    notas = []
-    while i<5:
-        while True:
-            try:
-                nota_est = float(input("Dame una nota: "))
-                if nota_est < 1 or nota_est > 5:
-                    print("Ingresa un número mayor a 1 y menor a 5")
-                    continue
-                Estudiante.notas = nota_est
-                break
-            except ValueError:
-                print("ingresa un numero, no  una letra")
-        i += 1
-
-    def promedioDesempeño(Estudiante):
-        for nota in notas:
-            suma = suma + nota
-
-        promedio = round(suma / len(notas),2)
-
-        if promedio < 3:
-            desempeño = "BAJO"
-        elif promedio < 3.9:
-            desempeño = "BÁSICO"
-        elif promedio < 4.5:
-            desempeño = "ALTO"
-        elif promedio <= 5:
-            desempeño = "SUPERIOR"
-
-        return desempeño, promedio
-
-    desglosado= ", ".join(notas)
-
-    print(f"DESEMPEÑO ACADÉMICO\nNOMBRE: {nombre}\nNOTAS: {desglosado}\nPROMEDIO: {promedio}\nDESEMPEÑO: {desempeño}")
-
-
-    
-
+                continue
 
 def GUI():
-    print("ingrese ejercicio del 1 al 12")
+    print("ingrese ejercicio del 1 al 13")
     
 
     funciones = {
@@ -457,7 +508,8 @@ def GUI():
         9: buscar,
         10: clasificar,
         11: analisis,
-        12: control
+        12: control,
+        13: final
     }
 
     while True:
@@ -473,6 +525,8 @@ def GUI():
         except ValueError:
             print("Ingresa un número válido.")
 
-    GUI()
+    i = 0
+    while i<12:
+        GUI()
 
 GUI()

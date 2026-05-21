@@ -273,21 +273,177 @@ def encuesta():
     print("Scratch:", respuestas.count("scratch"))
     
 def buscar():
-    estudiantes = ["Laura", "Isabella", "Ariana", "Valerie", "Ángela", "Samuel", "Juan Manuel"]
+    estudiantes = ["Laura", "Isabella", "Ariana", "Valerie", "Ángela", "Samuel", "Juan Manuel", "Emmanuel", "Danny", "Christian", "Sergio"]
+    print("Puede consultar los nombres de algunos de los estudiantes de grado Once")
 
     while True:
         try:
-            revisar = input("")
+            revisar = input("Ingrese un nombre para buscar: ").lower()
+            if revisar is not None and revisar.strip() != "":
+                break
+            else:
+                print("Ingrese un nombre vàlido")
+        except TypeError or ValueError:
+            print("Ingrese un nombre vàlido")
+
+    if revisar in estudiantes:
+        print("Estudiante registrado")
+    else:
+        print("estudiante no registrado")
+
+def clasificar():
+    numeros = []
+
+    i=0
+    while i<8:
+        while True:
+            try:
+                numero = int(input("Ingrese un número entero del -900 al 900: "))
+                if -900 <= numero <= 900:
+                    numeros.append(numero)
+                    break
+                else:
+                    print("Ingrese un número dentro del rango permitido.")
+            except ValueError or TypeError:
+                print("Ingrese un número válido.")
+    i+=1
+
+    pares = numeros.count(range(-901, 901, 2))
+    impares = numeros.count(range(-900, 901, 1))
+    ceros = numeros.count(0)
+
+
+    print(f"Números pares: {pares}")
+    print(f"Números impares: {impares}")
+    print(f"Ceros: {ceros}")
+
+def analisis():
+    palabras = []
+    i=0
+    while i<5:
+        while True:
+            try:
+                palabra = input("Ingrese una palabra: ").lower()
+                if palabra is not None and palabra.strip() != "":
+                    palabras.append(palabra)
+                    break
+                else:
+                    print("Ingrese una palabra válida")
+            except TypeError or ValueError:
+                print("Ingrese letras")
+        i+=1
+    
+    for palabra in palabras:
+        print(f"{palabra}: caracteres: {len(palabras[palabra])}")
+
+def control():
+    while True:
+        try:
+            nombre = input("Ingrese el nombre del estudiante: ").lower()
+            if nombre is not None and nombre.strip() != "":
+                break
+            else:
+                print("Ingrese un nombre válido")
+        except TypeError or ValueError:
+            print("Ingrese letras")
+
+    i = 0
+    suma = 0
+    notas = []
+    while i<5:
+        while True:
+            try:
+                nota_est = float(input("Dame una nota: "))
+                if nota_est < 1 or nota_est > 5:
+                    print("Ingresa un número mayor a 1 y menor a 5")
+                    continue
+                notas.append(nota_est)
+                break
+            except ValueError:
+                print("ingresa un numero, no  una letra")
+        i += 1
+
+    for nota in notas:
+        suma = suma + nota
+
+    promedio = round(suma / len(notas),2)
+
+    if promedio < 3:
+        desempeño = "BAJO"
+    elif promedio < 3.9:
+        desempeño = "BÁSICO"
+    elif promedio < 4.5:
+        desempeño = "ALTO"
+    elif promedio <= 5:
+        desempeño = "SUPERIOR"
+
+    desglosado= ", ".join(notas)
+
+    print(f"DESEMPEÑO ACADÉMICO\nNOMBRE: {nombre}\nNOTAS: {desglosado}\nPROMEDIO: {promedio}\nDESEMPEÑO: {desempeño}")
+
+def final():
+    class Estudiante:
+        def __init__(self, nombre, *notas:int):
+            nombre = nombre
+            est_notas = []
+            est_notas.extend(notas)
+    
+    while True:
+        try:
+            nombre = input("Ingrese el nombre del estudiante: ").lower()
+            if nombre is not None and nombre.strip() != "":
+
+                Estudiante.nombre = nombre
+                break
+            else:
+                print("Ingrese un nombre válido")
+        except TypeError or ValueError:
+            print("Ingrese letras")
+
+    i = 0
+    suma = 0
+    notas = []
+    while i<5:
+        while True:
+            try:
+                nota_est = float(input("Dame una nota: "))
+                if nota_est < 1 or nota_est > 5:
+                    print("Ingresa un número mayor a 1 y menor a 5")
+                    continue
+                Estudiante.notas = nota_est
+                break
+            except ValueError:
+                print("ingresa un numero, no  una letra")
+        i += 1
+
+    def promedioDesempeño(Estudiante):
+        for nota in notas:
+            suma = suma + nota
+
+        promedio = round(suma / len(notas),2)
+
+        if promedio < 3:
+            desempeño = "BAJO"
+        elif promedio < 3.9:
+            desempeño = "BÁSICO"
+        elif promedio < 4.5:
+            desempeño = "ALTO"
+        elif promedio <= 5:
+            desempeño = "SUPERIOR"
+
+        return desempeño, promedio
+
+    desglosado= ", ".join(notas)
+
+    print(f"DESEMPEÑO ACADÉMICO\nNOMBRE: {nombre}\nNOTAS: {desglosado}\nPROMEDIO: {promedio}\nDESEMPEÑO: {desempeño}")
+
+
+    
+
 
 def GUI():
-    print("ingrese ejercicio")
-    print("""1      2
-    3      4
-    5      6
-    7      8
-    9      10
-    11      12
-    """)
+    print("ingrese ejercicio del 1 al 12")
+    
 
     funciones = {
         1: listado,
@@ -297,7 +453,11 @@ def GUI():
         5: productos,
         6: precios,
         7: edadlista,
-        8: encuesta
+        8: encuesta,
+        9: buscar,
+        10: clasificar,
+        11: analisis,
+        12: control
     }
 
     while True:

@@ -1,0 +1,50 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+    margin: 0;            /* Removes default browser spacing */
+    display: grid;
+    place-items: center;  /* Centers the div vertically and horizontally */
+    height: 100vh;
+}
+
+.container {
+  position: relative; /* Creates a positioning context for children */
+  width: 500px;
+}
+
+/* 1. The Background Layer */
+.image-fade {
+  position: absolute;
+  top: 0; left: 0; width: 500px; height: 200px;
+  z-index: 1; /* Lowest layer */
+  background: 
+    linear-gradient(to left, transparent 30%, #ffffff 40%),
+    url('https://i.pinimg.com/736x/73/38/8a/73388a36173bb5990f0b5cce937668ae.jpg') no-repeat center/cover;
+
+}
+
+/* 2. The Content Layer */
+.web {
+    position: relative; 
+    z-index: 2; /* Higher than .image-fade, so it stays on top */
+    align-items: center;
+    /* Optional: Style your text layout */
+    padding-top: 20px;
+    margin-right: 200px;
+    color: #000000; 
+    text-align: center;
+}
+
+.web div {
+    margin: 0 auto;
+    width: 200px;
+    display: flex;
+    justify-content:space-evenly;
+}
+
+.spider {display: none;}

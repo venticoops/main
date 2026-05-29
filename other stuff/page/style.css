@@ -1,0 +1,32 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;            /* Removes default browser spacing */
+    display: grid;
+    place-items: center;  /* Centers the div vertically and horizontally */
+    height: 100vh;
+}
+
+.container {
+    width: 800px;
+    display: grid;
+    grid-template-areas: "nav nav"
+    "aside main";
+    grid-template-columns: 1fr 2fr;
+    border: 1px solid black;
+    gap: 20px;
+}
+
+main {grid-area: main;}
+aside{
+    grid-area: aside;
+    padding: 20px;
+    border: 1px solid black;
+    
+}
+nav{grid-area: nav;}

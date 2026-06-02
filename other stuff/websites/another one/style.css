@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma;
+}
+
+:root{
+    font-size: 13px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container{
+    margin: 50px auto;
+    width: 540px;
+    height: 680px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.flexed {
+    display: flex;
+    gap: 20px;
+}
+
+.flexed img {width: 150px;
+height: 100%;}
+.flexed article img { width: 150px;
+height: 100%;}
+
+.links {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+    background-color: black;
+}
+
+.text{
+    word-spacing: 10px;
+}
+
+.link {
+    color: white;
+}
+
+h2 {
+    color: gray;
+    font-size: 15px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

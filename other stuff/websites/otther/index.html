@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraise's commissions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="https://64.media.tumblr.com/ea6ddce6d1dfefeab0135ab46670a8a8/3c9b6da0a4db1ea9-a1/s75x75_c1/acde683923fcf9f06ef5fae0704596901b0dd41c.gifv" type="image/x-icon">
+</head>
+<body>
+    <div class="contenedor">
+        <div class="bases">
+            <div>
+            <a onclick="show('a')"><img src="http://media.tumblr.com/tumblr_m3sr56w39d1qid2nw.gif" alt="img"></a>
+            <a onclick="show('b')"><img src="http://media.tumblr.com/tumblr_m3jar7YGhO1qb1380.gif" alt="img"></a>
+            <a onclick="show('c')"><img src="http://media.tumblr.com/tumblr_m2b2gsFFhS1qb1380.gif" alt="img"></a>
+            </div>
+            <p>Fraise's commissions</p>
+            <p>click on the icons for info</p>
+            <div>
+                <button><a href="https://dazaichoux.carrd.co/">carrd</a></button>
+                <button><a href="https://github.com/venticoops">github</a></button>
+                <button><a href="https://www.instagram.com/venticoops/">instagram</a></button>
+            </div>
+        </div>
+
+        <hr>
+
+        <div id="content">
+            
+            <p>TOS (¬`‸´¬)</p>
+            <br>
+
+            <table>
+                <tr>
+
+                
+                <td>
+                    <b>TAT:</b> is up to a month but can be undefined. You get to see the colored sketch first and make changes, after that and after you pay (upfront/after sketch), you can’t make major changes.
+                </td>
+                <td>
+                    
+                    <b>TOS:</b> no stealing, tracing or fixing, no reposting with no credits, commercial use pays extra (negotiable) You HAVE to pay paypal’s fee but rbx tax is up to u! + character = half price (negotiable) 
+                    
+                </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>will:</b> slight nsfw, kemonomimis, couples, ocs, fanart (can’t assure), gore
+                        <br>
+                        <b>won't:</b> mecha, non-humanoids, offensive imagery, irls, pets, elders.
+                    </td>
+                    <td>
+                        provide visual reference, I’m open to negotiating prices! please ask for updates I forget often. I don’t mind small talk! I’m a student, I have a chronic disease that might delay the process of the request, pls be patient
+                    </td>
+                </tr>
+
+            </table>
+            <br>
+            <p>
+               payment usd, nitro, rbx, thru paypal
+            </p>
+
+        </div>
+        <div id="contenti">
+            <p>PRICES (¬`0´¬)</p>
+            <br>
+            <table>
+                <tr>
+                    <th><p><3</p></th>
+                    <th>Rendered</th>
+                    <th>Flat color</th>
+                    <th>Sketch</th>
+                    <th>Ref sheet</th>
+                </tr>
+                <tr>
+                    <th>full body</th>
+                    <td>800R - $50</td>
+                    <td>200R - $18</td>
+                    <td>60R - $10</td>
+                    <td>1K R - $50</td>
+                </tr>
+                <tr>
+                    <th>half body</th>
+                    <td>600R - $30</td>
+                    <td>100R - $15</td>
+                    <td>30R - $8</td>
+                    <th>custom</th>
+                </tr>
+                <tr>
+                    <th>head shot</th>
+                    <td>400R - $20</td>
+                    <td>80R - $12</td>
+                    <td>20R - $5</td>
+                    <td>300R - $20</td>
+                </tr>
+            </table>
+        </div>
+        <script>
+            
+            function openModal(src) {
+                document.getElementById('modalImg').src = src;
+                document.getElementById('modal').style.display = 'block';
+            }
+            function closeModal() {
+                document.getElementById('modal').style.display = 'none';
+            }
+            
+        </script>
+    
+        
+
+        <div id="contentii">
+            <p>ART EXAMPLES (¬`3´¬)</p>
+            <br>
+
+            <div class="art">
+                <img onclick="openModal(this.src)" src="https://i.postimg.cc/nchHjvJL/IMG-2931.jpg" alt="img">
+                <img onclick="openModal(this.src)" src="https://i.postimg.cc/QxdX9p35/IMG-2932.jpg" alt="img">
+                <img onclick="openModal(this.src)" src="https://i.postimg.cc/ZYr9FPX4/IMG-4407.png" alt="img">
+                <img onclick="openModal(this.src)" src="https://i.postimg.cc/vHZQgWsr/IMG-3583.png" alt="img">
+            </div>
+            <br>
+            <p>more on instagram!</p>
+        </div>
+
+
+
+        <script>
+
+            function show(type){
+                if (type === 'a'){
+                    document.getElementById("content").style.display = "block";
+                    document.getElementById("contenti").style.display = "none";
+                    document.getElementById("contentii").style.display = "none";
+
+                }
+                if (type === 'b'){
+                    document.getElementById("contenti").style.display = "block";
+                    document.getElementById("content").style.display = "none";
+                    document.getElementById("contentii").style.display = "none";
+                }
+                if (type === 'c'){
+                    document.getElementById("contentii").style.display = "block";
+                    document.getElementById("content").style.display = "none";
+                    document.getElementById("contenti").style.display = "none";
+                }
+
+            }
+        </script>
+
+    </div>
+    <div id="modal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+</body>
+</html>

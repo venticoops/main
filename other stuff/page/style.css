@@ -16,17 +16,31 @@ body {
     width: 800px;
     display: grid;
     grid-template-areas: "nav nav"
-    "aside main";
+    "aside main"
+    "footer footer";
     grid-template-columns: 1fr 2fr;
     border: 1px solid black;
-    gap: 20px;
 }
 
-main {grid-area: main;}
+main {grid-area: main;
+padding: 20px;}
 aside{
     grid-area: aside;
     padding: 20px;
-    border: 1px solid black;
+    border-right: 1px solid black;
     
 }
-nav{grid-area: nav;}
+nav{grid-area: nav;
+    display: flex;
+    justify-content:space-evenly;
+border-bottom: 1px solid black}
+nav button {
+    padding: 20px;
+    width: 100%;
+    border: none;
+}
+footer {
+    grid-area: footer;
+    border-top: 1px solid black;
+    padding: 20px;
+}
